@@ -4,3 +4,11 @@
 
 # Local Netlify folder
 .netlify
+
+# Projektordner – nicht für Netlify relevant
+Source-Code/
+Planung/
+Content/
+Grafiken/
+Scripts/
+Templates/
