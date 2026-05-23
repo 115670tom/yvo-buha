@@ -65,44 +65,6 @@
     .header-title { font-size: 1.05rem; font-weight: 700; color: var(--text-dark); }
     .header-sub   { font-size: 0.72rem; color: var(--text-light); margin-top: 1px; font-weight: 500; }
 
-    /* Preisliste Country Buttons */
-    .pl-country {
-      border: 1.5px solid var(--border);
-      background: var(--white);
-      color: var(--text-light);
-      font-family: var(--font);
-      font-size: 0.78rem;
-      font-weight: 600;
-      padding: 0.3rem 0.85rem;
-      border-radius: 20px;
-      cursor: pointer;
-      transition: all 0.18s;
-    }
-    .pl-country:hover { border-color: var(--primary); color: var(--primary); }
-    .pl-country.active {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: white;
-    }
-    .pl-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
-    .pl-table th {
-      background: var(--bg-warm);
-      color: var(--text-dark);
-      font-weight: 700;
-      padding: 0.5rem 0.75rem;
-      text-align: left;
-      position: sticky; top: 0;
-      border-bottom: 2px solid var(--border);
-    }
-    .pl-table th.r { text-align: right; }
-    .pl-table td { padding: 0.45rem 0.75rem; border-bottom: 1px solid var(--border); vertical-align: middle; }
-    .pl-table tr:last-child td { border-bottom: none; }
-    .pl-table tr:hover td { background: var(--bg-warm); }
-    .pl-price { text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--text-dark); }
-    .pl-tp    { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--primary); }
-    .pl-pts   { text-align: right; font-size: 0.75rem; color: var(--text-light); font-variant-numeric: tabular-nums; }
-    .pl-badge { display: inline-block; font-size: 0.65rem; font-weight: 700; padding: 0.1rem 0.4rem; border-radius: 8px; background: var(--bg-orange); color: var(--primary-dark); margin-left: 0.3rem; vertical-align: middle; }
-    .pl-oos   { opacity: 0.45; }
 
     /* Jahr-Schalter */
     .year-switcher { display: flex; gap: 0.35rem; align-items: center; }
@@ -459,33 +421,6 @@
   </div>
 
 
-  <!-- ── Preisliste DACH ──────────────────────────────────────────────── -->
-  <div class="panel" id="panel-preisliste">
-    <div class="panel-header" style="cursor:pointer" onclick="togglePreisliste()">
-      <div class="panel-title">🛒 Preisliste FitLine DACH</div>
-      <span id="preisliste-toggle-icon" style="font-size:0.8rem;color:var(--text-light);font-weight:600;margin-left:auto">▼ Öffnen</span>
-    </div>
-    <div id="preisliste-body" style="display:none">
-      <div class="panel-body" style="padding-bottom:0.5rem">
-        <!-- Land-Tabs -->
-        <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:0.9rem;align-items:center">
-          <button class="pl-country active" data-file="products_ch" onclick="loadPreisliste(this)">🇨🇭 CH (DE)</button>
-          <button class="pl-country" data-file="products_ch_fr" onclick="loadPreisliste(this)">🇨🇭 CH (FR)</button>
-          <button class="pl-country" data-file="products_ch_it" onclick="loadPreisliste(this)">🇨🇭 CH (IT)</button>
-          <button class="pl-country" data-file="products_de" onclick="loadPreisliste(this)">🇩🇪 DE</button>
-          <button class="pl-country" data-file="products_at" onclick="loadPreisliste(this)">🇦🇹 AT</button>
-          <input id="pl-search" type="search" placeholder="Produkt suchen…"
-            style="margin-left:auto;border:1.5px solid var(--border);border-radius:20px;padding:0.3rem 0.85rem;font-family:var(--font);font-size:0.8rem;outline:none;width:200px"
-            oninput="filterPreisliste()">
-        </div>
-        <!-- Tabelle -->
-        <div id="pl-table-wrap" style="max-height:420px;overflow-y:auto">
-          <div class="loading"><div class="spinner"></div> Lade Produkte…</div>
-        </div>
-        <div id="pl-count" style="font-size:0.72rem;color:var(--text-light);padding:0.5rem 0 0;text-align:right"></div>
-      </div>
-    </div>
-  </div>
 
 </main>
 
@@ -861,82 +796,6 @@ function renderYearComparison() {
     </div>`;
   }).join('');
   document.getElementById('years-wrap').innerHTML = `<div class="year-summary">${statsHtml}</div>`;
-}
-
-// ── Preisliste DACH ──────────────────────────────────────────────────────────
-let _plData = [];
-let _plCurrency = 'CHF';
-
-function togglePreisliste() {
-  const body = document.getElementById('preisliste-body');
-  const icon = document.getElementById('preisliste-toggle-icon');
-  const open = body.style.display === 'none';
-  body.style.display = open ? 'block' : 'none';
-  icon.textContent = open ? '▲ Schliessen' : '▼ Öffnen';
-  if (open && _plData.length === 0) {
-    // load default on first open
-    const btn = document.querySelector('.pl-country.active');
-    if (btn) loadPreisliste(btn);
-  }
-}
-
-async function loadPreisliste(btn) {
-  document.querySelectorAll('.pl-country').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('pl-table-wrap').innerHTML = '<div class="loading"><div class="spinner"></div> Lade Produkte…</div>';
-  document.getElementById('pl-count').textContent = '';
-  try {
-    const file = btn.dataset.file;
-    const resp = await fetch(`data/${file}.json`);
-    const json = await resp.json();
-    _plData = json.products || [];
-    _plCurrency = json.currency || 'CHF';
-    filterPreisliste();
-  } catch(e) {
-    document.getElementById('pl-table-wrap').innerHTML = `<p style="color:red;padding:1rem">Fehler: ${e.message}</p>`;
-  }
-}
-
-function filterPreisliste() {
-  const q = (document.getElementById('pl-search').value || '').toLowerCase();
-  const filtered = _plData.filter(p =>
-    !q || (p.name || '').toLowerCase().includes(q) ||
-    (p.articleNumber || '').toLowerCase().includes(q)
-  );
-  renderPreisliste(filtered);
-}
-
-function renderPreisliste(products) {
-  const cur = _plCurrency;
-  const fmt = (n) => n != null ? `${cur} ${Number(n).toFixed(2)}` : '–';
-  const rows = products.map(p => {
-    const oos = p.inStock === false ? ' pl-oos' : '';
-    const tp = p.tp_exclusive
-      ? `<span class="pl-tp">${fmt(p.displayPrice)}</span>`
-      : (p.finalPrice != null && p.finalPrice < p.basePrice)
-        ? `<span class="pl-tp">${fmt(p.finalPrice)}</span>`
-        : `<span style="color:var(--text-light);font-size:0.75rem">–</span>`;
-    const badge = p.badges && p.badges.length
-      ? p.badges.map(b => `<span class="pl-badge">${b}</span>`).join('')
-      : '';
-    return `<tr class="${oos}">
-      <td><strong>${p.name || '–'}</strong>${badge}</td>
-      <td class="pl-price">${fmt(p.basePrice)}</td>
-      <td>${tp}</td>
-      <td class="pl-pts">${p.points != null ? p.points + ' P' : '–'}</td>
-    </tr>`;
-  }).join('');
-  document.getElementById('pl-table-wrap').innerHTML = `
-    <table class="pl-table">
-      <thead><tr>
-        <th>Produkt</th>
-        <th class="r">Normalpreis</th>
-        <th class="r">TP-Preis</th>
-        <th class="r">Punkte</th>
-      </tr></thead>
-      <tbody>${rows || '<tr><td colspan="4" style="text-align:center;color:var(--text-light);padding:1rem">Keine Produkte gefunden</td></tr>'}</tbody>
-    </table>`;
-  document.getElementById('pl-count').textContent = `${products.length} Produkte`;
 }
 
 // ── Start ─────────────────────────────────────────────────────────────────────
