@@ -1,0 +1,249 @@
+{
+  "_meta": {
+    "version": "2026-05-16-v2",
+    "source": "FitLine CH Produkt-Etiketten (PDFs auf cdn.brandfolder.io)",
+    "method": "Vision-Extraktion aus Original-Labels",
+    "note": "NRV% basiert auf der Tagesportion gemäß Etikett. Bei Lücken: Wert nicht auf Etikett ausgewiesen."
+  },
+  "0708054": {
+    "name": "Activize Oxyplus",
+    "portion": "1.67 g",
+    "portionNote": "1 gestrichener Messlöffel pro Tag",
+    "nutrients": [
+      {"name": "Vitamin C", "amount": "30 mg", "nrv": 38},
+      {"name": "Niacin", "amount": "10 mg NE", "nrv": 63},
+      {"name": "Pantothensäure", "amount": "3.0 mg", "nrv": 50},
+      {"name": "Vitamin B6", "amount": "1.0 mg", "nrv": 69},
+      {"name": "Vitamin B1", "amount": "0.7 mg", "nrv": 64},
+      {"name": "Vitamin B2", "amount": "0.8 mg", "nrv": 57},
+      {"name": "Folsäure", "amount": "125 µg", "nrv": 63},
+      {"name": "Biotin", "amount": "20 µg", "nrv": 40},
+      {"name": "Vitamin B12", "amount": "0.7 µg", "nrv": 27},
+      {"name": "Koffein (aus Guaranaextrakt)", "amount": "10 mg", "nrv": null}
+    ]
+  },
+  "0708055": {
+    "name": "Activize Sensitive",
+    "portion": "1.67 g",
+    "portionNote": "1 gestrichener Messlöffel pro Tag",
+    "nutrients": [
+      {"name": "Vitamin C", "amount": "30 mg", "nrv": 38},
+      {"name": "Niacin", "amount": "10 mg NE", "nrv": 63},
+      {"name": "Pantothensäure", "amount": "3.0 mg", "nrv": 50},
+      {"name": "Vitamin B6", "amount": "1.0 mg", "nrv": 69},
+      {"name": "Vitamin B1", "amount": "0.7 mg", "nrv": 64},
+      {"name": "Vitamin B2", "amount": "0.8 mg", "nrv": 57},
+      {"name": "Folsäure", "amount": "125 µg", "nrv": 63},
+      {"name": "Biotin", "amount": "20 µg", "nrv": 40},
+      {"name": "Vitamin B12", "amount": "0.7 µg", "nrv": 27},
+      {"name": "Koffein (aus Guaranaextrakt)", "amount": "10 mg", "nrv": null}
+    ]
+  },
+  "0708062": {
+    "name": "Activize Lemon-Lime",
+    "portion": "1.67 g",
+    "portionNote": "1 gestrichener Messlöffel pro Tag",
+    "nutrients": [
+      {"name": "Vitamin C", "amount": "30 mg", "nrv": 38},
+      {"name": "Niacin", "amount": "10 mg NE", "nrv": 63},
+      {"name": "Pantothensäure", "amount": "3.0 mg", "nrv": 50},
+      {"name": "Vitamin B6", "amount": "1.0 mg", "nrv": 69},
+      {"name": "Vitamin B1", "amount": "0.7 mg", "nrv": 64},
+      {"name": "Vitamin B2", "amount": "0.8 mg", "nrv": 57},
+      {"name": "Folsäure", "amount": "125 µg", "nrv": 63},
+      {"name": "Biotin", "amount": "20 µg", "nrv": 40},
+      {"name": "Vitamin B12", "amount": "0.7 µg", "nrv": 27},
+      {"name": "Koffein (aus Guaranaextrakt)", "amount": "10 mg", "nrv": null}
+    ]
+  },
+  "0708065": {
+    "name": "Activize Peach Eistee",
+    "portion": "1.67 g",
+    "portionNote": "1 gestrichener Messlöffel pro Tag",
+    "nutrients": [
+      {"name": "Vitamin C", "amount": "30 mg", "nrv": 38},
+      {"name": "Niacin", "amount": "10 mg NE", "nrv": 63},
+      {"name": "Pantothensäure", "amount": "3.0 mg", "nrv": 50},
+      {"name": "Vitamin B6", "amount": "1.0 mg", "nrv": 69},
+      {"name": "Vitamin B1", "amount": "0.7 mg", "nrv": 64},
+      {"name": "Vitamin B2", "amount": "0.8 mg", "nrv": 57},
+      {"name": "Folsäure", "amount": "125 µg", "nrv": 63},
+      {"name": "Biotin", "amount": "20 µg", "nrv": 40},
+      {"name": "Vitamin B12", "amount": "0.7 µg", "nrv": 27},
+      {"name": "Koffein (aus Guaranaextrakt)", "amount": "27 mg", "nrv": null}
+    ]
+  },
+  "0702081": {
+    "name": "Restorate Citrus",
+    "portion": "6.7 g",
+    "portionNote": "1 Portion pro Tag",
+    "nutrients": [
+      {"name": "Calcium", "amount": "268 mg", "nrv": 34},
+      {"name": "Magnesium", "amount": "134 mg", "nrv": 36},
+      {"name": "Eisen", "amount": "5.4 mg", "nrv": 39},
+      {"name": "Zink", "amount": "2.1 mg", "nrv": 21},
+      {"name": "Kupfer", "amount": "0.67 mg", "nrv": 67},
+      {"name": "Mangan", "amount": "1.0 mg", "nrv": 50},
+      {"name": "Chrom", "amount": "60 µg", "nrv": 150},
+      {"name": "Selen", "amount": "17 µg", "nrv": 31},
+      {"name": "Vitamin D", "amount": "7.5 µg", "nrv": 150}
+    ]
+  },
+  "0702082": {
+    "name": "Restorate Exotic",
+    "portion": "6.7 g",
+    "portionNote": "1 Portion pro Tag",
+    "nutrients": [
+      {"name": "Calcium", "amount": "268 mg", "nrv": 34},
+      {"name": "Magnesium", "amount": "134 mg", "nrv": 36},
+      {"name": "Eisen", "amount": "5.4 mg", "nrv": 39},
+      {"name": "Zink", "amount": "2.1 mg", "nrv": 21},
+      {"name": "Kupfer", "amount": "0.67 mg", "nrv": 67},
+      {"name": "Mangan", "amount": "1.0 mg", "nrv": 50},
+      {"name": "Chrom", "amount": "60 µg", "nrv": 150},
+      {"name": "Selen", "amount": "17 µg", "nrv": 31},
+      {"name": "Vitamin D", "amount": "7.5 µg", "nrv": 150}
+    ]
+  },
+  "0705067": {
+    "name": "PowerCocktail",
+    "portion": "14 g",
+    "portionNote": "Tagesportion = 2 Portionen à 14 g",
+    "nutrients": [
+      {"name": "Selen", "amount": "28 µg", "nrv": 51},
+      {"name": "Vitamin C", "amount": "140 mg", "nrv": 175},
+      {"name": "Niacin", "amount": "28 mg NE", "nrv": 298},
+      {"name": "Vitamin E", "amount": "9.4 mg α-TE", "nrv": 78},
+      {"name": "Pantothensäure", "amount": "8.4 mg", "nrv": 140},
+      {"name": "Vitamin B6", "amount": "2.7 mg", "nrv": 200},
+      {"name": "Vitamin B1", "amount": "2.0 mg", "nrv": 182},
+      {"name": "Vitamin B2", "amount": "2.2 mg", "nrv": 157},
+      {"name": "Vitamin A", "amount": "310.8 µg RE", "nrv": 39},
+      {"name": "Folsäure", "amount": "350 µg", "nrv": 175},
+      {"name": "Biotin", "amount": "56 µg", "nrv": 112},
+      {"name": "Vitamin B12", "amount": "1.9 µg", "nrv": 56},
+      {"name": "Ballaststoffe", "amount": "4.76 g", "nrv": null},
+      {"name": "Koffein (aus Guaranaextrakt)", "amount": "28 mg", "nrv": null}
+    ]
+  },
+  "0705053": {
+    "name": "Generation 50+",
+    "portion": "5 g",
+    "portionNote": "1 Portion pro Tag",
+    "nutrients": [
+      {"name": "Vitamin E", "amount": "1.0 mg α-TE", "nrv": 91},
+      {"name": "Vitamin B2", "amount": "0.30 mg", "nrv": 21},
+      {"name": "Coenzym Q10", "amount": "30 mg", "nrv": null},
+      {"name": "Lutein", "amount": "5.0 mg", "nrv": null},
+      {"name": "Zeaxanthin", "amount": "0.30 mg", "nrv": null},
+      {"name": "DHA (Omega-3)", "amount": "125 mg", "nrv": null},
+      {"name": "EPA (Omega-3)", "amount": "3.75 mg", "nrv": null}
+    ]
+  },
+  "0709028": {
+    "name": "Beauty",
+    "portion": "6.5 g",
+    "portionNote": "1 Portion pro Tag",
+    "nutrients": [
+      {"name": "Vitamin C", "amount": "120 mg", "nrv": 150},
+      {"name": "Niacin", "amount": "120 mg NE", "nrv": 150},
+      {"name": "Vitamin E", "amount": "18 mg α-TE", "nrv": 150},
+      {"name": "Vitamin B2", "amount": "2.1 mg", "nrv": 149},
+      {"name": "Biotin", "amount": "75 µg", "nrv": 150},
+      {"name": "Zink", "amount": "1.8 mg", "nrv": 18},
+      {"name": "Kupfer", "amount": "0.175 mg", "nrv": 18},
+      {"name": "Kollagenpeptide", "amount": "6.5 g", "nrv": null}
+    ]
+  },
+  "0707013": {
+    "name": "Antioxy¹",
+    "portion": "7.5 g",
+    "portionNote": "1 Portion pro Tag",
+    "nutrients": [
+      {"name": "Selen", "amount": "30 µg", "nrv": 55},
+      {"name": "Vitamin A (aus Provitamin A)", "amount": "333 µg RE", "nrv": 42},
+      {"name": "Vitamin C", "amount": "56 mg", "nrv": 70},
+      {"name": "Vitamin E", "amount": "9.0 mg α-TE", "nrv": 75}
+    ]
+  },
+  "0702083": {
+    "name": "D-Drink",
+    "portion": "7 g",
+    "portionNote": "1 Beutel pro Tag",
+    "nutrients": [
+      {"name": "Selen", "amount": "19 µg", "nrv": 35},
+      {"name": "Zink", "amount": "3.5 mg", "nrv": 35},
+      {"name": "Molybdän", "amount": "18 µg", "nrv": 35},
+      {"name": "Cholin", "amount": "83 mg", "nrv": null}
+    ]
+  },
+  "0703009": {
+    "name": "Fitness-Drink",
+    "portion": "30 g",
+    "portionNote": "1 Portion pro Tag (= 240 ml verzehrfertig)",
+    "nutrients": [
+      {"name": "Energie", "amount": "433 kJ / 102 kcal", "nrv": null},
+      {"name": "Fett", "amount": "<0.5 g", "nrv": null},
+      {"name": "Kohlenhydrate", "amount": "24 g (davon Zucker 24 g)", "nrv": null},
+      {"name": "Salz", "amount": "0.20 g", "nrv": null},
+      {"name": "Kalium", "amount": "300 mg", "nrv": 15},
+      {"name": "Calcium", "amount": "252 mg", "nrv": 32},
+      {"name": "Magnesium", "amount": "114 mg", "nrv": 30},
+      {"name": "Chlorid", "amount": "200 mg", "nrv": 25},
+      {"name": "Phosphor", "amount": "210 mg", "nrv": 30},
+      {"name": "Vitamin C", "amount": "90 mg", "nrv": 113},
+      {"name": "Niacin", "amount": "16 mg NE", "nrv": 100},
+      {"name": "Vitamin E", "amount": "12 mg α-TE", "nrv": 100},
+      {"name": "Pantothensäure", "amount": "6.0 mg", "nrv": 100},
+      {"name": "Vitamin B6", "amount": "1.4 mg", "nrv": 100},
+      {"name": "Vitamin B1", "amount": "1.1 mg", "nrv": 100},
+      {"name": "Vitamin B2", "amount": "1.4 mg", "nrv": 100},
+      {"name": "Vitamin A", "amount": "200 µg RE", "nrv": 25},
+      {"name": "Folsäure", "amount": "200 µg", "nrv": 100},
+      {"name": "Biotin", "amount": "50 µg", "nrv": 100},
+      {"name": "Vitamin B12", "amount": "2.5 µg", "nrv": 100}
+    ]
+  },
+  "0704031": {
+    "name": "TopShape¹",
+    "portion": "6 Kapseln",
+    "portionNote": "Tagesportion: 6 Kapseln",
+    "nutrients": [
+      {"name": "Biotin", "amount": "20 µg", "nrv": 40},
+      {"name": "Calcium", "amount": "202 mg", "nrv": 25},
+      {"name": "Zink", "amount": "2 mg", "nrv": 20}
+    ]
+  },
+  "0705068": {
+    "name": "PowerCocktail Junior",
+    "portion": "14 g",
+    "portionNote": "1 Tagesportion = 14 g Pulver",
+    "nutrients": [
+      {"name": "Calcium", "amount": "140 mg", "nrv": 18},
+      {"name": "Magnesium", "amount": "66 mg", "nrv": 17},
+      {"name": "Zink", "amount": "2.5 mg", "nrv": 25},
+      {"name": "Selen", "amount": "17 µg", "nrv": 31},
+      {"name": "Kupfer", "amount": "0.67 mg", "nrv": 67},
+      {"name": "Mangan", "amount": "1.0 mg", "nrv": 50},
+      {"name": "Vitamin C", "amount": "60 mg", "nrv": 75},
+      {"name": "Niacin", "amount": "12 mg NE", "nrv": 75},
+      {"name": "Vitamin E", "amount": "8.4 mg α-TE", "nrv": 70},
+      {"name": "Pantothensäure", "amount": "4.2 mg", "nrv": 70},
+      {"name": "Vitamin A", "amount": "333 µg RE", "nrv": 42},
+      {"name": "Vitamin B1", "amount": "1.0 mg", "nrv": 91},
+      {"name": "Vitamin B2", "amount": "1.0 mg", "nrv": 71},
+      {"name": "Vitamin B6", "amount": "1.4 mg", "nrv": 100},
+      {"name": "Vitamin B12", "amount": "1.5 µg", "nrv": 60},
+      {"name": "Folsäure", "amount": "200 µg", "nrv": 100},
+      {"name": "Biotin", "amount": "56 µg", "nrv": 112},
+      {"name": "Vitamin D", "amount": "7.5 µg", "nrv": 150}
+    ]
+  },
+  "9700731": {
+    "name": "Optimal Set (PowerCocktail + Restorate Exotic)",
+    "portion": "14 g + 6.7 g",
+    "portionNote": "Tagesportion: 1× PowerCocktail (14g) + 1× Restorate Exotic (6.7g)",
+    "_combinedFrom": ["0705067", "0702082"],
+    "nutrients": []
+  }
+}
