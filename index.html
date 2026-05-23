@@ -624,25 +624,25 @@ const ST_UUID      = 'fd5a250a-2aa5-43c1-8a8b-13e879fda547';
 const ST_BASE      = `https://cloud.seatable.io/api-gateway/api/v2/dtables/${ST_UUID}`;
 
 const KONTEN = {
-  '3000': '3000 · Umsatzerlöse',
-  '3400': '3400 · PM-International',
-  '4000': '4000 · Wareneinkauf FitLine',
-  '4201': '4201 · Produkte Demo',
-  '4202': '4202 · Produkte Werbung',
-  '5000': '5000 · Reise & Spesen',
-  '5700': '5700 · AHV-Beiträge',
-  '5800': '5800 · Weiterbildung',
-  '6200': '6200 · Büro & Material',
-  '6260': '6260 · Fahrzeug Leasing',
-  '6300': '6300 · Versicherungen',
-  '6360': '6360 · Strassenverkehr',
-  '6500': '6500 · Betriebsaufwand',
-  '6510': '6510 · Telefon/Internet',
-  '6513': '6513 · Fahrzeugkosten',
-  '6530': '6530 · Softwareabo',
-  '6570': '6570 · Werbung & Marketing',
-  '6600': '6600 · Diverses',
-  '6640': '6640 · Akquise-Aufwand',
+  '3000': '3000 · PM-International (Provisionen, Boni)',
+  '3400': '3400 · Übriger Ertrag',
+  '4000': '4000 · PM-Produkteinkauf (Eigenverbrauch)',
+  '4201': '4201 · PM-Produkte (Demo / Eigenbedarf)',
+  '4202': '4202 · PM-Produkte (Werbung / Muster)',
+  '5000': '5000 · AHV / IV / EO Beiträge (SVZ Thurgau)',
+  '5700': '5700 · Sozialversicherungen (AHV selbständig)',
+  '5800': '5800 · Weiterbildung & Schulung',
+  '6200': '6200 · Fahrzeugkosten (Benzin, Service, Parkieren)',
+  '6260': '6260 · Fahrzeug-Leasing',
+  '6300': '6300 · Versicherungen (Berufs-/Haftpflicht)',
+  '6360': '6360 · Motorfahrzeugsteuern & -versicherung',
+  '6500': '6500 · Kommunikation (Telefon, Internet)',
+  '6510': '6510 · Telefon / Internet',
+  '6513': '6513 · Software & Abos (Claude, Canva, Zoom …)',
+  '6530': '6530 · Software-Abonnements',
+  '6570': '6570 · Marketing & Werbung',
+  '6600': '6600 · Reise & Spesen',
+  '6640': '6640 · Repräsentation & Bewirtung',
 };
 const KONTO_COLORS = {
   '3400':'#F05A1A','3000':'#EF7C00',
@@ -707,6 +707,42 @@ async function stFetch(table) {
   if(!r.ok) throw new Error(`SeaTable ${r.status}`);
   const d=await r.json();
   return (d.rows??[]).map(row=>convertRow(row,schema));
+}
+async function stFetchRaw(table) {
+  const jwt=await getJWT();
+  const r=await fetch(`${ST_BASE}/rows/?table_name=${encodeURIComponent(table)}&limit=2000`,
+    { headers:{Authorization:`Bearer ${jwt}`} });
+  if(!r.ok) throw new Error(`SeaTable ${r.status}`);
+  const d=await r.json();
+  return d.rows??[];
+}
+// Fetch Konto-Nr for all Buchungen rows via link column
+async function enrichKonto(buchungen, kontenRows) {
+  // Build Konten lookup: rowId → Konto-Nr
+  const kontenById={};
+  kontenRows.forEach(r=>{ if(r['7D1M']) kontenById[r['_id']]=r['7D1M']; });
+  // Batch query-links (max 200 per call)
+  const jwt=await getJWT();
+  const ids=buchungen.map(b=>b['_id']);
+  const linkMap={};
+  for(let i=0;i<ids.length;i+=200){
+    const batch=ids.slice(i,i+200).map(id=>({row_id:id}));
+    const r=await fetch(`${ST_BASE}/query-links/`,{
+      method:'POST',
+      headers:{Authorization:`Bearer ${jwt}`,'Content-Type':'application/json'},
+      body:JSON.stringify({table_id:'0000',link_column_key:'8b4a',rows:batch})
+    });
+    if(r.ok){
+      const d=await r.json();
+      Object.assign(linkMap,d);
+    }
+  }
+  // Enrich each row with Konto-Nr
+  buchungen.forEach(b=>{
+    const linked=linkMap[b['_id']];
+    if(linked&&linked.length>0) b['Konto']=kontenById[linked[0].row_id]||'?';
+    else if(!b['Konto']||Array.isArray(b['Konto'])) b['Konto']='–';
+  });
 }
 
 // ── Hilfsfunktionen ───────────────────────────────────────────────────────────
@@ -976,7 +1012,12 @@ function renderYearComparison() {
 async function loadAll() {
   buildYearSwitcher();
   try {
-    [allBuchungen, allLager] = await Promise.all([stFetch('Buchungen'), stFetch('Lager')]);
+    const [buchungenConverted, allLagerData, kontenRaw] = await Promise.all([
+      stFetch('Buchungen'), stFetch('Lager'), stFetchRaw('Konten')
+    ]);
+    allLager = allLagerData;
+    allBuchungen = buchungenConverted;
+    await enrichKonto(allBuchungen, kontenRaw);
 
     // Letztes Jahr mit Daten
     const yearsWithData=YEARS.filter(y=>getYearRows(y).length>0);
